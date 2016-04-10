@@ -373,10 +373,11 @@ function updateVis(animate) {
 	// we also want to change the radius of the circle, first we must select the circle that sits inside of our <g> tag
 	.select("circle")
 	// change the radius similar to how we changed the transform property
-	.attr("r", function(d) {
+	/*.attr("r", function(d) {
 		// here we return an integer, not a string as above
-		return sizeScale(d.values[sizeIndex]);
-	    });
+		return sizeScale(d.values[sizeIndex]);*/
+	.attr("r", 11);
+	    //});
 
 	//for removing and filtering data you want to remove
 	selection.exit().remove();
@@ -765,10 +766,11 @@ function updateVis2(animate) {
 	// we also want to change the radius of the circle, first we must select the circle that sits inside of our <g> tag
 	.select("circle")
 	// change the radius similar to how we changed the transform property
-	.attr("r", function(d) {
-		// here we return an integer, not a string as above
-		return sizeScale(d.values[sizeIndex]);
-	    });
+	//.attr("r", function(d) {
+	//	// here we return an integer, not a string as above
+	//	return sizeScale(d.values[sizeIndex]);
+	  //  });
+	.attr("r", 11);
 
 	//for removing and filtering data you want to remove
 	selection.exit().remove();

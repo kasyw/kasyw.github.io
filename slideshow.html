@@ -1,0 +1,347 @@
+<!--
+
+-->
+<html>
+<head>
+<title>CPSC583 Project 2.3</title>
+
+<style>
+
+  <!--Top Graph    -->
+
+#chart2, #sidebar {
+    width: 10px;
+    height: 100px;
+    background-color: lightsteelblue;
+}
+
+#title {
+    position: absolute;
+    top: 5px;
+    left: 280px;
+}
+
+#sidebar {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    background-color: E6F2FF;
+}
+
+#chart2 {
+    position: absolute;
+    top: 20px;
+    left: 265px;
+
+}
+
+
+
+<!--  Bottom Graph     -->
+#chart, #sidebar2 {
+    width: 10px;
+    height: 100px;
+    background-color: lightsteelblue;
+}
+
+
+#sidebar2  {
+	position: absolute;
+	top: 770px;
+	left: 10px;
+
+}
+
+#chart {
+    position: absolute;
+    top: 330px;
+    left: 265px;
+}
+
+
+
+#buttons3, #popup {
+  	display: none;
+	position: absolute;
+	top: 370px;
+	left: 30px;
+	-moz-box-shadow: 3px 4px 11px 1px #9fb4f2;
+	-webkit-box-shadow: 3px 4px 11px 1px #9fb4f2;
+	box-shadow: 3px 4px 11px 1px #9fb4f2;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+	background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+	background-color:#7892c2;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+	border-radius:18px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 18px;
+	text-decoration:none;
+	text-shadow:0px 0px 27px #283966;
+}
+
+
+#buttons3:hover, #popup {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+	display: block;
+}
+
+
+
+#buttons4 {
+	position: absolute;
+	top: 410px;
+	left: 30px;
+	-moz-box-shadow: 3px 4px 11px 1px #9fb4f2;
+	-webkit-box-shadow: 3px 4px 11px 1px #9fb4f2;
+	box-shadow: 3px 4px 11px 1px #9fb4f2;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+	background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+	background-color:#7892c2;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+	border-radius:18px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 18px;
+	text-decoration:none;
+	text-shadow:0px 0px 27px #283966;
+}
+
+#buttons4:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+}
+
+
+#buttons5 {
+	position: absolute;
+	top: 510px;
+	left: 30px;
+	-moz-box-shadow: 3px 4px 11px 1px #9fb4f2;
+	-webkit-box-shadow: 3px 4px 11px 1px #9fb4f2;
+	box-shadow: 3px 4px 11px 1px #9fb4f2;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+	background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+	background-color:#7892c2;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+	border-radius:18px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 18px;
+	text-decoration:none;
+	text-shadow:0px 0px 27px #283966;
+}
+
+#buttons5:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+}
+
+
+#buttons6 {
+	position: absolute;
+	top: 600px;
+	left: 30px;
+	-moz-box-shadow: 3px 4px 11px 1px #9fb4f2;
+	-webkit-box-shadow: 3px 4px 11px 1px #9fb4f2;
+	box-shadow: 3px 4px 11px 1px #9fb4f2;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7892c2), color-stop(1, #476e9e));
+	background:-moz-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-webkit-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-o-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:-ms-linear-gradient(top, #7892c2 5%, #476e9e 100%);
+	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
+	background-color:#7892c2;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+	border-radius:18px;
+	border:1px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:7px 18px;
+	text-decoration:none;
+	text-shadow:0px 0px 27px #283966;
+}
+
+#buttons6:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+}
+
+
+div.tooltip {
+
+  position: absolute;           
+  text-align: center;           
+  width: 60px;                  
+  height: 28px;                 
+  padding: 2px;             
+  font: 12px sans-serif;        
+  background: lightsteelblue;   
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;
+}
+
+
+
+</style> 
+
+</head>
+
+<body>
+
+<div id="chart">
+	<svg id="graphics">
+	</svg>
+
+<div id="buttons"></div>
+
+</div>
+
+
+
+
+<div id="chart2">
+	<svg id="graphics2">
+	</svg>
+
+
+<div id="buttons2">
+</div>
+</div>
+
+<div id="title">
+<font face="Comic sans MS" color="#8C001A" size="3">The Relationship
+	Between Road Traffic Mortality and GNI for
+	Countries around the World   </font>
+
+</div>
+
+
+<div id="sidebar">
+
+
+<center>
+<font face="Comic sans MS" color="#000028" size="2"><br>INSTRUCTIONS<br></font>
+
+<font face="Comic sans MS" color="#15317E" size="2"><br>Change the view of each  <br>
+	scatterplot by manipulating<br>
+	corresponding drop menus.</font>
+
+
+<center>
+<font face="Comic sans MS" color="#000028" size="2">______________________<br><br>GROSS NATIONAL INCOME<br></font>
+
+<font face="Comic sans MS" color="#15317E" size="2"><br>sum of gross domestic <br>
+	product plus net income<br>
+	from other countries</font>
+
+
+<font face="Comic sans MS" color="#15317E" size="2"><br>______________________<br><br>The following will direct your <br>
+	interaction and/or show key<br>
+	data relationships:<br></font>
+
+<a href=" " title="Although African countries are on the lower end of the GNI spectrum, they have similar or surprisingly, higher percentages of 4-wheeled vehicle accidents. This is because South Africa actually has a very well developed road network. Hover over the African countries to see this.
+
+Click on the Pedestrian button and we see a general decline of pedestrian involved accidents as a country's GNI increases. 
+European pedestrian mortality for the lower GNI countries was very similar to percentages in European 4-wheeled vehicle involved accidents. African countries have a more concentrated grouping of pedestrian involved accidents for majority of the countries. This might suggest walking is still a common 
+means of getting from place to place in Africa."><font face="Comic sans MS" color="#000028" size="2"><br>AFRICA vs EUROPE <br></font></a> 
+
+<!--<a href=" " title="This is some text I want to display."><button id="buttons3">4-wheeled vehicles</button></a> 
+<a href=" " title="This is some text I want to display."><button id="buttons4">Pedestrian</button></a> 
+<a href=" " title="This is some text I want to display."><button id="buttons4">Pedestrian</button></a>-->
+
+<button id="buttons4">Pedestrian</button>
+<button id="buttons3">4-wheeled vehicles</button>
+
+<p> <br> <br><br></p>
+
+
+<a href=" " title="North American countries see a variety of GNI distribution. As GNI increases however, it seems that pedestrian involved deaths also increases, but there is not the same decline with 4-wheeled vehicles. This can be a consequence of pedestrian road traffic education. For example, Canada and USA have the highest GNI of the North American countries shown, however they see very low pedestrian accidents. "><font face="Comic sans MS" color="#000028" size="2">_______________________<br><br>PEDESTRIANS vs 4-WHEELERS<br></font></a> 
+
+<button id="buttons5">North America</button>
+
+
+<a href=" " title="Motorcycle safety measures are generally not well enforced in Asian countries as they are in Western society. As a result, there is very little clustering or patterns to be seen when looking at road traffic mortality involving 2- 3- motorized vehicles in Asia. In developing countries, the attraction to motorcycles comes motorcyles being overwhelmingly utilitarian due to lower prices and greater fuel economy. On the other hand, motorcycle users are vulnerable on the road when measures like helmet laws are not enforced. In North America, we see clustering of lower mortality rates involving 2- 3- motorized vehicles. "><font face="Comic sans MS" color="#000028" size="2"><br><br>_______________________<br><br>MOTORISTS</font></a> 
+
+<button id="buttons6">Asia vs North America</button>
+
+
+<p><br>_______________________________ </p>
+
+</div>
+</div>
+
+
+<script src="./d3.v3.min.js" type="text/javascript"></script>
+<script src="./underscore-min.js" type="text/javascript"></script>
+<script src="./rawData.js" type="text/javascript"></script>
+<script src="./scatterplot.js" type="text/javascript"></script>
+
+
+</body>
+</html>

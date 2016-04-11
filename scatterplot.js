@@ -20,7 +20,7 @@ var sizeScale = d3.scale.linear().range([3, 20]);
 var xAxis = d3.svg.axis().orient("bottom");
 var yAxis = d3.svg.axis().orient("left");
 
-var sizeIndex = 0, xAxisIndex = 5, yAxisIndex = 0, yAxisIndex2 = 0, continentIndex = 6, continentIndex2 = 6;
+var sizeIndex = 0, xAxisIndex = 5, yAxisIndex = 0, yAxisIndex2 = 0, continentIndex = 6, continentIndex2 = 6, tempContIndex1 = 0, tempContIndex2 = 0;
 
 var colour = d3.scale.category10();
 
@@ -237,7 +237,7 @@ function createVis() {
 
 
 // we give the updateVis function a flag to tell it whether or not to animate
-function updateVis(animate) {
+function updateVis(animate)  {
 	// compute the max value for the x and y and size scales
 	var maxValX = d3.max(countries, function (d) { return d.values[xAxisIndex];});
 	var maxValY = d3.max(countries, function (d) { return d.values[yAxisIndex];});
@@ -265,7 +265,8 @@ function updateVis(animate) {
 			.style("opacity", 1) 
 			.style("stroke", "#000000") // would be better to put this in the stylesheet
 			.style("stroke-width", 1)   
-       			.attr(function(d) { return (d.name); })        
+       			.attr(function(d) { return (d.name); }) 
+
 			.on("mouseover", function(d) {      
             		div.transition()        
                 	.duration(200)      
@@ -289,8 +290,7 @@ function updateVis(animate) {
                 	.style("opacity", 0); 
 			d3.select(this).style("fill", colour(d.continent));  
 			d3.select("#graphics2").selectAll("circle").style("fill",function (d)  { return colour(d.continent);});
-       			 });
-
+       			 });    
 
 	// this is the animation duration in ms
 	// if animate is true then 500ms, otherwise 0ms (no animation)
@@ -301,34 +301,34 @@ function updateVis(animate) {
 
 	if (continentIndex == 0) {
 	
-	tempCountries = tempCountries.slice(0, 26);	//Africa
+	tempCountries = tempCountries.slice(0, 26);
 
 	}
 	
 	else if (continentIndex == 1)  {
 
-	tempCountries = tempCountries.slice(26, 56);	//Asia
+	tempCountries = tempCountries.slice(26, 56);
 
 	}
 
 	else if (continentIndex == 2)  {
 
-	tempCountries = tempCountries.slice(56, 63);	//Australia
+	tempCountries = tempCountries.slice(56, 63);
 	}
 
 	else if (continentIndex == 3)  {
 
-	tempCountries = tempCountries.slice(63, 103);	//Europe
+	tempCountries = tempCountries.slice(63, 103);
 	}
 
 	else if (continentIndex == 4)  {
 	
-	tempCountries = tempCountries.slice(103, 121);	//NA
+	tempCountries = tempCountries.slice(103, 121);
 	}
 
 	else if (continentIndex == 5)  {
 
-	tempCountries = tempCountries.slice(122, 130);	//SA
+	tempCountries = tempCountries.slice(121, 130);
 
 	}
 	else if (continentIndex == 6)  {
@@ -337,9 +337,35 @@ function updateVis(animate) {
 
 	}
 
-
-
 	var selection = root.selectAll(".country").data(tempCountries);
+
+	if (tempContIndex1 != continentIndex)  {
+
+	selection
+		// lets not forget that this selection is actually giving us the <g> element that contains the <circle> element
+		// (see createVis() for how this is constructed)
+		.attr("transform", function(d) {
+			// we change the transform property to position the <g>
+			// using our scales, we give it the value and it will give us screen coordinates
+			// similar to the map() function from processing
+			var xValue = xScale(d.values[xAxisIndex]);
+			var yValue = yScale(d.values[yAxisIndex]);
+			// once again we construct this string translate(x,y)
+			return "translate(" +
+				xValue + "," + 
+				yValue + ")";
+		})
+    
+
+
+	// we also want to change the radius of the circle, first we must select the circle that sits inside of our <g> tag
+	.select("circle")
+	.attr("r", 11);
+
+
+	}
+
+	else if (tempContIndex1 == continentIndex) {
 
 	selection
 		.transition()
@@ -369,15 +395,14 @@ function updateVis(animate) {
 				xValue + "," + 
 				yValue + ")";
 		})
+    
+
 
 	// we also want to change the radius of the circle, first we must select the circle that sits inside of our <g> tag
 	.select("circle")
-	// change the radius similar to how we changed the transform property
-	/*.attr("r", function(d) {
-		// here we return an integer, not a string as above
-		return sizeScale(d.values[sizeIndex]);*/
 	.attr("r", 11);
-	    //});
+
+	}
 
 	//for removing and filtering data you want to remove
 	selection.exit().remove();
@@ -385,10 +410,9 @@ function updateVis(animate) {
 
 	//recreate variable holding the circle so we can maintain a continent colour coding
 	//even after we have removed a selection of our code
-	var selection2 = root.selectAll(".country").data(tempCountries)
-	selection2.selectAll("circle")       
+	var selection2 = root.selectAll(".country").data(tempCountries);
+	selection2.selectAll("circle")
 	.style("fill",function (d)  { return colour(d.continent);});
-
 
 	// update the scales for the x and y axes
 	xAxis.scale(xScale);
@@ -402,6 +426,8 @@ function updateVis(animate) {
 		.select(".label").text(headers[xAxisIndex]);
 	root.select(".yAxis").call(yAxis)
 		.select(".label").text(headers[yAxisIndex]);
+
+	tempContIndex1 = continentIndex;
 
 }
 
@@ -732,6 +758,34 @@ function updateVis2(animate) {
 
 	var selection = root2.selectAll(".country").data(tempCountries);
 
+	if (tempContIndex2 != continentIndex2)  {
+
+	selection
+		// lets not forget that this selection is actually giving us the <g> element that contains the <circle> element
+		// (see createVis() for how this is constructed)
+		.attr("transform", function(d) {
+			// we change the transform property to position the <g>
+			// using our scales, we give it the value and it will give us screen coordinates
+			// similar to the map() function from processing
+			var xValue = xScale(d.values[xAxisIndex]);
+			var yValue = yScale(d.values[yAxisIndex2]);
+			// once again we construct this string translate(x,y)
+			return "translate(" +
+				xValue + "," + 
+				yValue + ")";
+		})
+    
+
+
+	// we also want to change the radius of the circle, first we must select the circle that sits inside of our <g> tag
+	.select("circle")
+	.attr("r", 11);
+
+
+	}
+
+	else if (tempContIndex2 == continentIndex2) {
+
 	selection
 		.transition()
 		.duration(duration)
@@ -765,12 +819,9 @@ function updateVis2(animate) {
 
 	// we also want to change the radius of the circle, first we must select the circle that sits inside of our <g> tag
 	.select("circle")
-	// change the radius similar to how we changed the transform property
-	//.attr("r", function(d) {
-	//	// here we return an integer, not a string as above
-	//	return sizeScale(d.values[sizeIndex]);
-	  //  });
 	.attr("r", 11);
+
+	}
 
 	//for removing and filtering data you want to remove
 	selection.exit().remove();
@@ -794,6 +845,9 @@ function updateVis2(animate) {
 		.select(".label").text(headers[xAxisIndex]);
 	root2.select(".yAxis").call(yAxis)
 		.select(".label").text(headers[yAxisIndex2]);
+
+	tempContIndex2 = continentIndex2;
+
 }
 
 
